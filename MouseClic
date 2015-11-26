@@ -1,0 +1,27 @@
+
+
+function posInGrid(x, y, length) {
+  xFromColCenter = x % length - length / 2;
+  yFromRowCenter = y % length - length / 2;
+  col = (x - xFromColCenter) / length;
+  row = (y - yFromRowCenter) / length;
+  if (yFromRowCenter < xFromColCenter) {
+    if (yFromRowCenter < (-xFromColCenter))--row;
+      else++col;
+    } 
+    else if (yFromRowCenter > xFromColCenter) {
+      if (yFromRowCenter < (-xFromColCenter))--col;
+      else++row;
+    }
+  return "Col:"+col+", Row:"+row+", xFC:"+xFromColCenter+", yFC:"+yFromRowCenter;
+}
+
+/*
+X and Y are the coords in the image, and length is the spacing of the grid.
+
+Right now it returns a string, just for testing.. result should be row and col, and those are the coordinates I chose: your tile 1 has coords (1,0) tile 2 is(3,0), tile 10 is (0,1), tile 11 is (2,1). You could convert my coordinates to your numbered tiles in a line or two.
+
+And a JSFiddle for testing http://jsfiddle.net/NHV3y/
+
+Found in http://stackoverflow.com/questions/5611982/click-detection-in-a-2d-isometric-grid
+*/
